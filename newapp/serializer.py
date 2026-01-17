@@ -40,13 +40,10 @@ class WishlistSerializer(serializers.ModelSerializer):
         fields = ['id', 'user', 'product', 'added_at']
 
 
-class ProfileSerializer(serializers.ModelSerializer):
-    username = serializers.CharField(write_only=True)
-    email = serializers.EmailField(write_only=True)
-    password = serializers.CharField(write_only=True)
+class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Profile
+        model = User
         fields = ['id', 'username', 'email', 'password', 'phone_number', 'address']
     
     

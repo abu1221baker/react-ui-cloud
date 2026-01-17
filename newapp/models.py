@@ -2,17 +2,12 @@ import uuid
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.contrib.auth.models import AbstractUser
 
 
-# =========================
-# CUSTOM USER MODEL
-# =========================
-class Profile(models.Model):
-    user = models.OneToOneField(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        related_name='profile'
-    )
+
+
+class User(AbstractUser):
     phone_number = models.CharField(
         max_length=15,
         blank=True,
@@ -23,6 +18,9 @@ class Profile(models.Model):
         blank=True,
         null=True
     )
+
+    def __str__(self):
+        return self.username
 
     def __str__(self):
         return self.user.username
@@ -87,9 +85,7 @@ class Order(models.Model):
         return f"Order {self.id}"
 
 
-# =========================
-# ORDER ITEM
-# =========================
+
 class OrderItem(models.Model):
     id = models.UUIDField(
         primary_key=True,
