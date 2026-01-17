@@ -1,0 +1,27 @@
+API Endpoints and Methods
+
+1. Authentication
+- POST /api/register/       : User registration
+- POST /api/login/          : User login (JWT)
+
+2. Products
+- GET /api/products/        : List all products
+- POST /api/products/       : Create product (Manager only)
+- GET /api/products/<uuid>/ : Get product details
+- PUT /api/products/<uuid>/ : Update product (Manager only)
+- DELETE /api/products/<uuid>/: Delete product (Manager only)
+
+3. Orders
+- GET /api/orders/          : List orders (Manager: all, Customer: own)
+- POST /api/orders/         : Create order with nested items
+- GET /api/orders/<uuid>/   : Get order details (Manager or Owner)
+- PATCH /api/orders/<uuid>/status/: Update order status (Manager only)
+
+4. Wishlist
+- GET /api/wishlist/        : List personal wishlist
+- POST /api/wishlist/       : Add product to wishlist
+- DELETE /api/wishlist/<pk>/: Remove from wishlist
+
+5. Profile
+- GET /api/profile/         : Get user profile
+- PUT /api/profile/         : Update user profile
